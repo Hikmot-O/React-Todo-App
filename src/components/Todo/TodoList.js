@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 
 import { TbEdit, TbCheckbox, TbSquare } from "react-icons/tb";
 import { RiDeleteBinLine, RiCheckboxCircleFill } from "react-icons/ri";
@@ -16,16 +16,23 @@ const TodoList = (props) => {
   };
 
   const toggleHandler = () =>{
-    setTaskIsDone(previous => !previous);
-
-    // console.log(props.tasks);
-
-    if(taskIsDone === true){
-      setCompleteTask((prevCompleteTasks) => [...prevCompleteTasks, props.tasks])
-    }
-    console.log(completeTask);
+    console.log(taskIsDone);
+    setTaskIsDone((prevTaskIsDone) =>{
+      return !prevTaskIsDone;
+    });
     
+    
+    // if(taskIsDone){
+    //   console.log(props.task);
+    //   setCompleteTask((prevCompleteTask) => [...prevCompleteTask, props.task]);
+      
+    //   console.log(completeTask);
+    // } 
   }
+  
+    
+
+  
 
   return (
     <li className="todo-item">
@@ -33,7 +40,7 @@ const TodoList = (props) => {
         <div className='text'>
           {!taskIsDone && <TbSquare onClick={toggleHandler} className="check-icon" />}
           {taskIsDone && <TbCheckbox onClick={toggleHandler} className="check-icon" />}
-          {props.task}
+          {props.task.task}
         </div>
 
         <div className="icon-container">

@@ -15,6 +15,7 @@ const Todo = (props) => {
     const taskValue = {
       id: `e${Math.random()}`,
       task: taskInput,
+      taskComplete: false,
     };
 
     if (taskInput === "") {
@@ -51,7 +52,9 @@ const Todo = (props) => {
               <TodoList
                 key={task.id}
                 id={task.id}
-                task={task.task}
+                // task={task.task}
+                task={task}
+                // taskComplete={taskIsComplete}
                 onDelete={deleteHandler}
                 tasks={props.tasks}
               />
