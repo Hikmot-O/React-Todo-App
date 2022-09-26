@@ -1,0 +1,41 @@
+.todo{
+    margin: 5rem auto;
+    padding: 5rem;
+    border-radius: 2.5rem;
+    background: rgb(33, 12, 75);
+    width:80%;
+}
+.heading{
+    color: white;
+    font-size: 3.4rem;
+    text-align: center;
+}
+form{
+    text-align: center;
+}
+.input{
+    color: #fff;
+    border: 2px solid rgb(93, 12, 255);
+    outline: none;
+    background-color: transparent;
+    height: 26px;
+    width: 35rem;
+    padding: 1rem;
+    border-top-left-radius: .5rem;
+    border-bottom-left-radius: .5rem;
+}
+.input::placeholder{
+    color: #fff;
+}
+
+.btn{
+    border: none;
+    color: #fff;
+    width: 80px;
+    height: 50px;
+    background: linear-gradient(90deg, rgb(93, 12, 255), rgb(155, 0, 250));
+    padding: 0;
+    border-top-right-radius: .5rem;
+    border-bottom-right-radius: .5rem;
+}
+

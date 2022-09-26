@@ -1,0 +1,39 @@
+ul{
+    list-style: none;
+    padding: 0;
+}
+
+.todo-item{
+    color: white;
+    background-color: rgb(93, 12, 255);
+    padding: 1.5rem;
+    font-size: 1.6rem;
+    width: 80%;
+    margin: 2rem auto;
+    border-radius: .5rem;   
+}
+
+.test{
+    display: flex;
+    justify-content: space-between;
+}
+
+.task-complete{
+    text-decoration: line-through;
+}
+
+.icon-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto 0;
+    gap: 1rem;
+}
+
+.icon{
+    align-items: flex-end;
+}
+
+.check-icon{
+    
+}
