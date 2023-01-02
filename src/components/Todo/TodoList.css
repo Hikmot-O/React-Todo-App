@@ -16,6 +16,8 @@ ul{
 .test{
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    /* position: relative; */
 }
 
 .task-complete{
@@ -26,14 +28,33 @@ ul{
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: auto 0;
+    /* margin: auto 0; */
     gap: 1rem;
 }
 
 .icon{
-    align-items: flex-end;
+    align-items: center;
+    
+    /* justify-content: center; */
 }
 
-.check-icon{
-    
+.todo-text{
+    align-items: center;
+    justify-content: center;
+    justify-content: center;
+    vertical-align: middle;
+    margin-left: 1rem;
+}
+/* .check-icon{
+     position: absolute;-+
+    top: 50%;
+    transform: translateY(-50%); 
+} */
+
+.edit-input{
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    /* vertical-align: middle; */
 }

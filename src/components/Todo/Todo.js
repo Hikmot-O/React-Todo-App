@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import TodoList from "./TodoList";
+import CompletedTasks from "./CompletedTasks";
 import "./Todo.css";
 
 // const task = useRef();
@@ -30,6 +31,14 @@ const Todo = (props) => {
     props.onDelete(id);
   };
 
+  const toggleHandler = (id) => {
+    props.onToggle(id);
+  };
+
+  const editHandler = (input, id) => {
+    props.onEditTask(input, id);
+  }
+
   return (
     <div className="todo">
       <h1 className="heading">What Are You Doing Today?</h1>
@@ -46,17 +55,36 @@ const Todo = (props) => {
         </button>
       </form>
       <div className="todo-list">
+        <h3>Uncompleted Tasks: {props.totalTasks}</h3>
         <ul>
           {props.tasks.map((task) => {
             return (
               <TodoList
                 key={task.id}
                 id={task.id}
-                // task={task.task}
                 task={task}
-                // taskComplete={taskIsComplete}
-                onDelete={deleteHandler}
                 tasks={props.tasks}
+                done={props.done}
+                onDelete={deleteHandler}
+                onToggleTodo={toggleHandler}
+                onEdit={editHandler}
+              />
+            );
+          })}
+        </ul>
+      </div>
+
+      <div>
+        <h3>Completed Tasks: {props.totalCompleted}</h3>
+        <ul>
+          {props.completed.map((task) => {
+            return (
+              <CompletedTasks
+              key={task.id}
+              task={task}
+                completed={props.completed}
+                onDelete={deleteHandler}
+                onToggleTodo={toggleHandler}
               />
             );
           })}

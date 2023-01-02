@@ -1,51 +1,61 @@
-import { useEffect, useState, useMemo } from 'react';
+import { useState, useRef } from "react";
 
 import { TbEdit, TbCheckbox, TbSquare } from "react-icons/tb";
-import { RiDeleteBinLine, RiCheckboxCircleFill } from "react-icons/ri";
-// import { ImCheckboxChecked, ImCheckboxUnchecked } from "react-icons/im";
+import { RiDeleteBinLine } from "react-icons/ri";
 
 import "./TodoList.css";
 
 const TodoList = (props) => {
-  const [taskIsDone, setTaskIsDone] = useState(false);
-  const [completeTask, setCompleteTask] = useState([]);
-  const [InompleteTask, setIncompleteTask] = useState([]);
+  const [done, setDone] = useState(false);
+  const [isEdit, setIsEdit] = useState(false);
+  const editInputRef = useRef();
+  // const [inputEdit, setInputEdit] = useState('');
+
+  
 
   const deleteHandler = () => {
     props.onDelete(props.id);
   };
 
-  const toggleHandler = () =>{
-    console.log(taskIsDone);
-    setTaskIsDone((prevTaskIsDone) =>{
-      return !prevTaskIsDone;
-    });
-    
-    
-    // if(taskIsDone){
-    //   console.log(props.task);
-    //   setCompleteTask((prevCompleteTask) => [...prevCompleteTask, props.task]);
-      
-    //   console.log(completeTask);
-    // } 
-  }
-  
-    
+  const toggleHandler = () => {
+    props.onToggleTodo(props.task.id);
 
+    setDone(true);
+  };
+
+  const editHandler = () => {
+    setIsEdit(true);
+  };
   
+  const editSubmitHandler = (e) =>{
+    e.preventDefault();
+    props.onEdit(editInputRef.current.value, props.id);
+    setIsEdit(false);
+  }
 
   return (
     <li className="todo-item">
-      <div className={taskIsDone ? "test task-complete" : "test"}>
-        <div className='text'>
-          {!taskIsDone && <TbSquare onClick={toggleHandler} className="check-icon" />}
-          {taskIsDone && <TbCheckbox onClick={toggleHandler} className="check-icon" />}
-          {props.task.task}
+      <div className="test">
+        <div className={done ? "test task-complete" : "test"}>
+          <div className="icon-container">
+            {!done && (
+              <TbSquare onClick={toggleHandler} className="icon check-icon" />
+            )}
+            {done && (
+              <TbCheckbox onClick={toggleHandler} className=" icon check-icon" />
+            )}
+          </div>
+          {!isEdit && <div className="todo-text">{props.task.task}</div>}
+          {isEdit && (
+            <form onSubmit={editSubmitHandler}>
+              <input type="text" className="edit-input" ref={editInputRef} />
+            </form>
+          )}
         </div>
 
         <div className="icon-container">
           <RiDeleteBinLine className="icon" onClick={deleteHandler} />
-          <TbEdit className="icon" />
+          <TbEdit className="icon" onClick={editHandler} />
         </div>
       </div>
     </li>

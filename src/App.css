@@ -5,4 +5,8 @@
 
 .app{
   margin: 0 auto;
+  background: linear-gradient(rgb(93, 12, 255), rgb(155, 0, 250));
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
 }
